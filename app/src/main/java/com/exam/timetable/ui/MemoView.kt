@@ -17,7 +17,8 @@ open class MemoView @JvmOverloads constructor(
     : LinearLayout(context, attrs, defStyleAttr){
 
     interface SetClickListener {
-        fun setClickListener(memo: MemoDBInfo)
+        fun setTrashClickListener(memo: MemoDBInfo)
+        fun setShowMemoClickListener(memo: MemoDBInfo)
     }
 
     init{
@@ -28,7 +29,10 @@ open class MemoView @JvmOverloads constructor(
         tvMemoTitle.text = memo.title
         if (mode == 0) {
             ivTrash.setOnClickListener {
-                mSetClickListener?.setClickListener(memo)
+                mSetClickListener?.setTrashClickListener(memo)
+            }
+            iv.setOnClickListener {
+                mSetClickListener?.setShowMemoClickListener(memo)
             }
         } else {
             tvMemoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 5f);

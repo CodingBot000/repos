@@ -10,6 +10,7 @@
     <string name="type_study">STUDY</string>
     <string name="type_homework">HOMEWORK</string>
     <string name="edttext_hint">강의 검색</string>
+    <string name="close">닫기</string>
 
     <string-array name="default_header_title">
         <item></item>

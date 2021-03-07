@@ -211,7 +211,11 @@ public class TimetableView extends LinearLayout {
                     memoView.setDataListener(1, schedule.getMemoDatas().get(0),
                             new MemoView.SetClickListener() {
                                 @Override
-                                public void setClickListener(@NotNull MemoDBInfo memo) {
+                                public void setTrashClickListener(@NotNull MemoDBInfo memo) {
+
+                                }
+                                @Override
+                                public void setShowMemoClickListener(@NotNull MemoDBInfo memo) {
 
                                 }
                             });

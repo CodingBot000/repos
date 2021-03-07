@@ -138,9 +138,14 @@ class DetailActivity : BaseActivity<ActivityDetailBinding, DetailViewModel>()
                             val memoView = MemoView(this@DetailActivity)
 
                             memoView.setDataListener(0, memo, object : MemoView.SetClickListener {
-                                    override fun setClickListener(memo: MemoDBInfo) {
-                                        removeMemoAPI(memo)
-                                    }
+                                override fun setTrashClickListener(memo: MemoDBInfo) {
+                                    removeMemoAPI(memo)
+                                }
+
+                                override fun setShowMemoClickListener(memo: MemoDBInfo) {
+                                    val dlg = MemoShowDialog(this@DetailActivity)
+                                    dlg.show(memo)
+                                }
                             })
                             containerMemo.addView(memoView)
 
