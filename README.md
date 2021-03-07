@@ -88,6 +88,7 @@ OnActivirtyForResult를 사용하면 연쇄종료를 시켜야하는데 매우 �
 정확히 뭐가 문제인지 알려주지않아 해당부분 처리가 안되었습니다.
 {"message":"강의 코드 삭제 에러 : ConditionalCheckFailedException: The conditional request failed"}%    
 
-
+[메모 보기 화면]
+메모를 등록후에 정작 이미 등록된 메모내용을 다시보는 기능이 정의도 없고 UI설명도 없어서 상세화면 아래 리스팅된 메모리스트에서 왼쪽 메모 아이콘을 클릭하면 다이얼로그로 띄워줬습니다
 
 
