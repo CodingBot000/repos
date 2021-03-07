@@ -67,7 +67,8 @@ class SearchActivity : BaseActivity<ActivitySearchBinding, SearchViewModel>()
             LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = adapter
-        viewModel.getAllLectures()
+        adapter.initItem(LectureDataAll)
+//        viewModel.getAllLectures()
 
     }
 
@@ -144,8 +145,10 @@ class SearchActivity : BaseActivity<ActivitySearchBinding, SearchViewModel>()
     private fun initEditTextEvent() {
         btnSearch.setOnClickListener {
             val key = edtSearch.text.toString()
-            if (key.isEmpty())
-                viewModel.getAllLectures()
+            if (key.isEmpty()) {
+//                viewModel.getAllLectures()
+                adapter.initItem(LectureDataAll)
+            }
             else if (isCode(key))
                 viewModel.getLecturesToCode(key)
             else

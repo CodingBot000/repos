@@ -24,8 +24,16 @@ class TimeTableInfoRepositoryImpl(
         return timeTableDBInfoLocalDataSource.insertInfo(info)
     }
 
+    override fun insertTimeTableInfoDBNoRx(info: TimeTableDBInfo): Long {
+        return timeTableDBInfoLocalDataSource.insertInfoNoRx(info)
+    }
+
     override fun removeTimeTableInfoDB(info: TimeTableDBInfo): Completable {
         return timeTableDBInfoLocalDataSource.removeInfo(info)
+    }
+
+    override fun removeAllTimeTableInfoDB(): Int {
+        return timeTableDBInfoLocalDataSource.removeAll()
     }
 
     override fun updateTimeTableInfoDB(info: TimeTableDBInfo): Completable {

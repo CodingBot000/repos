@@ -43,7 +43,8 @@ class LectureAdapter (private val itemListClick: (LectureData) -> Unit)
     }
 
     fun initItem(list: ArrayList<LectureData>) {
-        recyclerItemList = list
+        recyclerItemList.clear()
+        recyclerItemList.addAll(list)
         notifyDataSetChanged()
     }
 

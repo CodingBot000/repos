@@ -25,8 +25,16 @@ class MemoTableInfoRepositoryImpl(
         return memoTableDBInfoLocalDataSource.insertInfo(info)
     }
 
+    override fun insertMemoTableInfoDBNoRx(info: MemoDBInfo): Long {
+        return memoTableDBInfoLocalDataSource.insertInfoNoRx(info)
+    }
+
     override fun removeMemoTableInfoDB(info: MemoDBInfo): Completable {
         return memoTableDBInfoLocalDataSource.removeInfo(info)
+    }
+
+    override fun removeAllMemoTableInfoDB(): Int {
+        return memoTableDBInfoLocalDataSource.removeAll()
     }
 
     override fun updateMemoTableInfoDB(info: MemoDBInfo): Completable {

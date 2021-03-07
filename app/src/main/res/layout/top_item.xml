@@ -21,6 +21,15 @@
             style="@style/TextTitleStyle"
             android:text = "@string/timetable"/>
 
+        <TextView
+            android:id = "@+id/tvSync"
+            android:layout_width="@dimen/top_item_trending_plus_button_size"
+            android:layout_height="@dimen/top_item_trending_plus_button_size"
+            android:text = "Sync"
+            android:layout_marginRight ="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/btnSearch" />
+
         <ImageButton
             android:id = "@+id/btnSearch"
             android:layout_width="@dimen/top_item_trending_plus_button_size"

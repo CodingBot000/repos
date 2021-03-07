@@ -18,15 +18,24 @@ class TimeTableDBInfoLocalDataSourceImpl(private val timeTableDao: TimeTableDao)
         return timeTableDao.getAll()
     }
 
-    override fun insertInfo(favoriteInfo: TimeTableDBInfo) : Single<Long> {
-        return timeTableDao.insert(favoriteInfo)
+    override fun insertInfo(info: TimeTableDBInfo) : Single<Long> {
+        return timeTableDao.insert(info)
     }
 
-    override fun removeInfo(favoriteInfo: TimeTableDBInfo) : Completable {
-        return timeTableDao.delete(favoriteInfo)
+    override fun insertInfoNoRx(info: TimeTableDBInfo): Long {
+        return timeTableDao.insertNoRx(info)
     }
 
-    override fun updateInfo(favoriteInfo: TimeTableDBInfo) : Completable {
-        return timeTableDao.update(favoriteInfo)
+    override fun removeInfo(info: TimeTableDBInfo) : Completable {
+        return timeTableDao.delete(info)
+    }
+
+
+    override fun updateInfo(info: TimeTableDBInfo) : Completable {
+        return timeTableDao.update(info)
+    }
+
+    override fun removeAll(): Int {
+        return timeTableDao.deleteAll()
     }
 }

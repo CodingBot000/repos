@@ -10,6 +10,8 @@ interface TimeTableDBInfoLocalDataSource {
     fun getInfo(lectureKey : String) : Single<TimeTableDBInfo>
     fun getInfoAll() : Single<List<TimeTableDBInfo>>
     fun insertInfo(info: TimeTableDBInfo) : Single<Long>
+    fun insertInfoNoRx(info: TimeTableDBInfo) : Long
     fun removeInfo(info: TimeTableDBInfo) : Completable
     fun updateInfo(info: TimeTableDBInfo) : Completable
+    fun removeAll() : Int
 }

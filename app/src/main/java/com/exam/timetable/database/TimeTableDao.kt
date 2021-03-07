@@ -27,8 +27,14 @@ interface TimeTableDao {
     @Delete
     fun delete(list :List<TimeTableDBInfo>) : Completable
 
+    @Query("DELETE FROM TABLE_TIMETABLE")
+    fun deleteAll() : Int
+
     @Insert(onConflict = REPLACE)
     fun insert(timeTableDBInfo: TimeTableDBInfo) : Single<Long>
+
+    @Insert(onConflict = REPLACE)
+    fun insertNoRx(timeTableDBInfo: TimeTableDBInfo) : Long
 
 
 }

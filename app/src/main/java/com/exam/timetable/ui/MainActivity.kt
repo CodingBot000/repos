@@ -29,6 +29,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
+val LectureDataAll = ArrayList<LectureData>()
 
 class MainActivity :  BaseActivity<ActivityMainBinding, MainViewModel>() {
     override val TAG: String
@@ -118,10 +119,11 @@ class MainActivity :  BaseActivity<ActivityMainBinding, MainViewModel>() {
 
         btnSearch.setOnClickListener {
             startActivity(Intent(this@MainActivity, SearchActivity::class.java))
-
-
         }
 
+        tvSync.setOnClickListener {
+            viewModel.syncMyDatas()
+        }
         RxEvent.getObservable().subscribe({
             if (it == RXEVENT_REFRESH) {
                 Log.v(Const.LOG_TAG, RXEVENT_REFRESH)
@@ -159,8 +161,10 @@ class MainActivity :  BaseActivity<ActivityMainBinding, MainViewModel>() {
 
                 when (it.status) {
                     Status.SUCCESS -> {
-                        timeTableDBInfoArray.clear()
-                        timeTableDBInfoArray.addAll((it.data!!))
+                        if (it.data != null && !it.data.isEmpty()) {
+                            timeTableDBInfoArray.clear()
+                            timeTableDBInfoArray.addAll((it.data!!))
+                        }
                     }
 
                     Status.ERROR -> {

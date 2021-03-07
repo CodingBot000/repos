@@ -17,15 +17,23 @@ class MemoTableDBInfoLocalDataSourceImpl(private val memoDao: MemoDao) :
         return memoDao.getAll()
     }
 
-    override fun insertInfo(favoriteInfo: MemoDBInfo) : Completable {
-        return memoDao.insert(favoriteInfo)
+    override fun insertInfo(info: MemoDBInfo) : Completable {
+        return memoDao.insert(info)
     }
 
-    override fun removeInfo(favoriteInfo: MemoDBInfo) : Completable {
-        return memoDao.delete(favoriteInfo)
+    override fun insertInfoNoRx(info: MemoDBInfo): Long {
+        return memoDao.insertNoRx(info)
     }
 
-    override fun updateInfo(favoriteInfo: MemoDBInfo) : Completable {
-        return memoDao.update(favoriteInfo)
+    override fun removeInfo(info: MemoDBInfo) : Completable {
+        return memoDao.delete(info)
+    }
+
+    override fun updateInfo(info: MemoDBInfo) : Completable {
+        return memoDao.update(info)
+    }
+
+    override fun removeAll(): Int {
+        return memoDao.deleteAll()
     }
 }

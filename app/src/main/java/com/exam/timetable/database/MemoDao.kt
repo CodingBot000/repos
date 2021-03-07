@@ -28,8 +28,13 @@ interface MemoDao {
     @Delete
     fun delete(list :List<MemoDBInfo>) : Completable
 
-    @Insert
+    @Query("DELETE FROM TABLE_MEMO")
+    fun deleteAll() : Int
+
+    @Insert(onConflict = REPLACE)
     fun insert(memoDBInfo: MemoDBInfo) : Completable
 
+    @Insert(onConflict = REPLACE)
+    fun insertNoRx(memoDBInfo: MemoDBInfo) : Long
 
 }

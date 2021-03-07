@@ -10,7 +10,9 @@ import io.reactivex.Single
 interface MemoTableDBInfoLocalDataSource {
     fun getInfo(userId : String) : Single<List<MemoDBInfo>>
     fun getInfoAll() : Single<List<MemoDBInfo>>
-    fun insertInfo(favoriteInfo: MemoDBInfo) : Completable
-    fun removeInfo(favoriteInfo: MemoDBInfo) : Completable
-    fun updateInfo(favoriteInfo: MemoDBInfo) : Completable
+    fun insertInfo(info: MemoDBInfo) : Completable
+    fun insertInfoNoRx(info: MemoDBInfo) : Long
+    fun removeInfo(info: MemoDBInfo) : Completable
+    fun updateInfo(info: MemoDBInfo) : Completable
+    fun removeAll() : Int
 }
