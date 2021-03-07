@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="onTextChanged"
+            type="androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged" />
+        <variable
+            name="viewModel"
+            type="com.exam.timetable.viewmodel.SearchViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:background="@color/colorWhite">
+        <RelativeLayout
+            android:id = "@+id/rlSearchContainer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edttext_height"
+            android:paddingRight="20dp"
+            android:background="@color/colorDarkSky"
+            app:layout_constraintTop_toTopOf="parent">
+            <EditText
+                android:id="@+id/edtSearch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edttext_height"
+
+                android:hint = "@string/edttext_hint"
+                android:onTextChanged="@{viewModel.onTextChanged}"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                style = "@style/TextTitleStyle"/>
+            <ImageView
+                android:id = "@+id/btnSearch"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_search"
+                android:gravity="center_vertical"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/colorWhite"
+            app:layout_constraintVertical_weight="100"
+            app:layout_constraintTop_toBottomOf="@id/rlSearchContainer"
+            />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/ProgressIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

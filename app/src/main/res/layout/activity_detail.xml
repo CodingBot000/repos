@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <import type="com.exam.timetable.utils.Const"/>
+
+        <variable
+            name="viewModel"
+            type="com.exam.timetable.viewmodel.DetailViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding = "10dp"
+        android:background="@color/colorWhite">
+        <LinearLayout
+            android:id = "@+id/containerContents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvLectureTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:layout_marginBottom="15dp"
+                android:textSize="40dp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/icon_watch"
+                    android:layout_marginRight="10dp"/>
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+              <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/icon_part"
+                    android:layout_marginRight="10dp"/>
+                <TextView
+                    android:id="@+id/tvCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+              <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/icon_professor"
+                    android:layout_marginRight="10dp"/>
+                <TextView
+                    android:id="@+id/tvProfessor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+              </LinearLayout>
+              <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/icon_lecture"
+                    android:layout_marginRight="10dp"/>
+                <TextView
+                    android:id="@+id/tvLecureRoom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+              </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:layout_marginTop="30dp"
+            android:id = "@+id/memoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:textSize="30dp"
+            android:text = "메모"
+            android:layout_below="@id/containerContents"/>
+        <LinearLayout
+            android:id = "@+id/containerMemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/memoTitle"/>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/ProgressIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/buttons_bottom_menu"
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true">
+            <Button
+                android:id="@+id/btnAddLecture"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/buttons_bottom_menu"
+                android:background="@color/colorBlue"
+                android:text = "@string/addlecture"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:visibility="gone"/>
+            <LinearLayout
+                android:id = "@+id/llMemoBtnContainer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/buttons_bottom_menu"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btnAddMemo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/buttons_bottom_menu"
+                    android:background="@color/colorBlue"
+                    android:layout_weight="1"
+                    android:text = "@string/addmemo"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"/>
+                <Button
+                    android:id="@+id/btnRemoveLecture"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/buttons_bottom_menu"
+                    android:background="@color/colorBlue"
+                    android:layout_weight="1"
+                    android:text = "@string/removelecture"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>
+

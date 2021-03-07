@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.exam.timetable.viewmodel.MainViewModel" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/top_item_trending_height"
+        android:background="@color/colorWhite"
+        android:paddingLeft="@dimen/margin_padding_10dp"
+        android:paddingRight="@dimen/margin_padding_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            style="@style/TextTitleStyle"
+            android:text = "@string/timetable"/>
+
+        <ImageButton
+            android:id = "@+id/btnSearch"
+            android:layout_width="@dimen/top_item_trending_plus_button_size"
+            android:layout_height="@dimen/top_item_trending_plus_button_size"
+            android:background="@drawable/icon_create"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</layout>

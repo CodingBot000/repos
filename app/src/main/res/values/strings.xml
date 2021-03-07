@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">TimeTableWork</string>
+
+    <string name="addmemo">메모 등록</string>
+    <string name="addlecture">강의 등록</string>
+    <string name="removelecture">강의 취소</string>
+    <string name="timetable">시간표</string>
+    <string name="today">오늘</string>
+    <string name="type_exam">EXAM</string>
+    <string name="type_study">STUDY</string>
+    <string name="type_homework">HOMEWORK</string>
+    <string name="edttext_hint">강의 검색</string>
+
+    <string-array name="default_header_title">
+        <item></item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+    </string-array>
+
+    <string-array name="header_title">
+        <item></item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+    </string-array>
+
+</resources>

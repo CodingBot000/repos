@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name ="colorLogoBack">#ff0849</color>
+    <color name ="colorPrimary">#008577</color>
+    <color name ="colorPrimaryDark">#00574B</color>
+    <color name ="colorAccent">#D81B60</color>
+    <color name ="colorWhite">#FFFFFF</color>
+    <color name ="colorBlack">#000000</color>
+    <color name ="colorDarkSky">#9bbbd4</color>
+    <color name ="colorGrayText">#556677</color>
+    <color name = "colorRed">#ff0000</color>
+    <color name = "colorOrange">#ff8c00</color>
+    <color name = "colorYellow">#ffff00</color>
+    <color name = "colorGreen">#008000</color>
+    <color name = "colorBlue">#0000ff</color>
+    <color name = "colorIndigo">#4b0082</color>
+    <color name = "colorPurple">#800080</color>
+
+
+    <color name="colorHeader">#fcfcfc</color>
+    <color name="colorHeaderText">#7d7d7d</color>
+    <color name="colorTableItem">#efefef</color>
+
+    <string-array name="default_sticker_color">
+        <item>#f08676</item>
+        <item>#ecc369</item>
+        <item>#a7ca70</item>
+        <item>#7dd1c1</item>
+        <item>#7aa5e9</item>
+        <item>#fbaa68</item>
+        <item>#9f86e1</item>
+        <item>#78cb87</item>
+        <item>#d397ed</item>
+    </string-array>
+
+    <color name="default_side_header_font_color">#7d7d7d</color>
+    <color name="default_header_font_color">#7d7d7d</color>
+    <color name="default_header_highlight_font_color">#ffffff</color>
+    <color name="default_header_highlight_color">#74a4f3</color>
+    <color name="default_sticker_font_color">#ffffff</color>
+</resources>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <import type="com.exam.timetable.utils.Const"/>
+        <variable
+            name="item"
+            type="com.exam.timetable.model.data.InteractionData" />
+        <variable
+            name="viewModel"
+            type="com.exam.timetable.viewmodel.MemoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding = "10dp"
+        android:background="@color/colorWhite">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:layout_marginBottom="20dp"
+                android:textSize="40dp"
+                android:textStyle="bold"
+                android:text ="메모 등록하기"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:text = "제목"/>
+            <EditText
+                android:id = "@+id/edtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:hint="제목 추가"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:text = "설명"/>
+            <EditText
+                android:id = "@+id/edtDesc"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:gravity="top|left"
+                android:textSize="20dp"
+                android:hint="설명 추가"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:text = "타입"/>
+            <RadioGroup
+                android:id = "@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:checkedButton="@+id/radioBtn1"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id = "@+id/radioBtn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text = "@string/type_exam"/>
+                <RadioButton
+                    android:id = "@+id/radioBtn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text = "@string/type_study"/>
+                <RadioButton
+                    android:id = "@+id/radioBtn3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text = "@string/type_homework"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/ProgressIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <Button
+            android:id="@+id/btnAddMemo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/buttons_bottom_menu"
+            android:layout_gravity="bottom"
+            android:background="@color/colorBlue"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:text = "@string/addmemo"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

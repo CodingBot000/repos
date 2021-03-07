@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.exam.timetable.viewmodel.MainViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:orientation="vertical">
+        <include
+            layout="@layout/top_item"
+            android:id = "@+id/ll_top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/top_item_trending_height"
+            app:viewModel="@{viewModel}"/>
+        <View
+            android:id = "@+id/viewLine"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/colorGrayText"
+            android:layout_below="@id/ll_top"/>
+        <include
+            layout="@layout/top_item_date"
+            android:id = "@+id/ll_top_date"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/top_item_trending_height"
+            android:layout_below="@id/viewLine"
+            app:viewModel="@{viewModel}" />
+        <com.exam.timetable.ui.timetableview.TimetableView
+            android:id="@+id/timetable"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ll_top_date"
+            app:header_highlight_image="@drawable/ic_launcher"
+            app:header_highlight_image_size="36dp"
+            app:header_highlight_type="color"
+            app:header_title="@array/header_title" />
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/ProgressIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+</layout>
+
