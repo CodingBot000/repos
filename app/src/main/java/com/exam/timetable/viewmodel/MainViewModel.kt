@@ -17,6 +17,7 @@ import com.exam.timetable.model.repository.search.SearchRepository
 import com.exam.timetable.model.repository.timetable.MemotableInfoRepository
 import com.exam.timetable.model.repository.timetable.TimetableInfoRepository
 import com.exam.timetable.ui.LectureDataAll
+import com.exam.timetable.ui.timetableview.Schedule
 import com.exam.timetable.utils.Const
 import com.exam.timetable.utils.Resource
 import com.exam.timetable.utils.getDayOfTheWeekConvert
@@ -44,8 +45,8 @@ class MainViewModel(private val timetableInfoRepository: TimetableInfoRepository
     val itemLiveData: LiveData<Event<Resource<TimeTableDataParent>>> get() = _itemLiveData
     private val _myTimeTableLiveData = MutableLiveData<Event<Resource<List<TimeTableDBInfo>>>>()
     val myTimeTableLiveData: LiveData<Event<Resource<List<TimeTableDBInfo>>>> get() = _myTimeTableLiveData
-    private val _myMemoTableLiveData = MutableLiveData<Event<Resource<List<MemoDBInfo>>>>()
-    val myMemoTableLiveData: LiveData<Event<Resource<List<MemoDBInfo>>>> get() = _myMemoTableLiveData
+    private val _myMemoTableLiveData = MutableLiveData<Event<Resource<ArrayList<Schedule>>>>()
+    val myMemoTableLiveData: LiveData<Event<Resource<ArrayList<Schedule>>>> get() = _myMemoTableLiveData
 
     init {
         getAllLectures()
@@ -65,14 +66,16 @@ class MainViewModel(private val timetableInfoRepository: TimetableInfoRepository
             .doAfterTerminate { hideProgress() }
             .subscribe({ it ->
                 _myTimeTableLiveData.postValue(Event(Resource.success(it)))
-                getMemoTableData()
+                val timeTableDBInfoArray = ArrayList<TimeTableDBInfo>()
+                timeTableDBInfoArray.addAll((it))
+                getMemoTableData(timeTableDBInfoArray)
             },
             {
                 _myTimeTableLiveData.postValue(Event(Resource.error(it.message.toString(), null)))
             }))
     }
 
-    fun getMemoTableData() {
+    fun getMemoTableData(timeTableDBInfoArray: ArrayList<TimeTableDBInfo>) {
         compositeDisposable.add(
             memotableInfoRepository.getMemoTableInfoAllDB().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -81,7 +84,8 @@ class MainViewModel(private val timetableInfoRepository: TimetableInfoRepository
                 }
                 .doAfterTerminate { hideProgress() }
                 .subscribe({ it ->
-                    _myMemoTableLiveData.postValue(Event(Resource.success(it)))
+                    val schdules = setTimeTableData(it, timeTableDBInfoArray)
+                    _myMemoTableLiveData.postValue(Event(Resource.success(schdules)))
                 },
                 {
                     _myMemoTableLiveData.postValue(Event(Resource.error(it.message.toString(), null)))
@@ -172,6 +176,50 @@ class MainViewModel(private val timetableInfoRepository: TimetableInfoRepository
         )
     }
 
+    fun setTimeTableData(it: List<MemoDBInfo>, timeTableDBInfoArray: ArrayList<TimeTableDBInfo>)
+    : ArrayList<Schedule> {
+        val schedules = ArrayList<Schedule>()
+        val memoDBInfoMap = HashMap<String, ArrayList<MemoDBInfo>>()
+        for (info in it) {
+            if (memoDBInfoMap.containsKey(info.keyLecture)) {
+                val list = memoDBInfoMap.get(info.keyLecture)
+                list!!.add(info)
+                memoDBInfoMap.put(
+                    info.keyLecture,
+                    list
+                )
+            } else {
+                val list = ArrayList<MemoDBInfo>()
+                list.add(info)
+                memoDBInfoMap.put(
+                    info.keyLecture,
+                    list
+                )
+            }
+        }
+
+
+        for (tData in timeTableDBInfoArray) {
+            val startTimeArr = tData.start_time.split(":")
+            val endTimeArr = tData.end_time.split(":")
+            val schedule = Schedule()
+
+            schedule.startTime.hour = startTimeArr[0].toInt()
+            schedule.startTime.minute = startTimeArr[1].toInt()
+            schedule.endTime.hour = endTimeArr[0].toInt()
+            schedule.endTime.minute = endTimeArr[1].toInt()
+            schedule.classTitle = tData.lecture
+            schedule.classPlace = tData.location
+            schedule.day = tData.dayofweek.toInt()
+            schedule.color = tData.color
+            schedule.key = tData.keyLecture
+            schedule.memoDatas = memoDBInfoMap[tData.keyLecture]
+
+            schedules.add(schedule)
+
+        }
+        return schedules
+    }
 
 
     fun getAllLectures() {

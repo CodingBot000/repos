@@ -39,10 +39,10 @@ class MainActivity :  BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override val viewModel : MainViewModel by viewModel()
 
-    val schedules = ArrayList<Schedule>()
 
-    val timeTableDBInfoArray = ArrayList<TimeTableDBInfo>()
-    val memoDBInfoMap = HashMap<String, ArrayList<MemoDBInfo>>()
+
+//    val timeTableDBInfoArray = ArrayList<TimeTableDBInfo>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -163,10 +163,7 @@ class MainActivity :  BaseActivity<ActivityMainBinding, MainViewModel>() {
 
                 when (it.status) {
                     Status.SUCCESS -> {
-                        if (it.data != null) {
-                            timeTableDBInfoArray.clear()
-                            timeTableDBInfoArray.addAll((it.data!!))
-                        }
+
                     }
 
                     Status.ERROR -> {
@@ -181,47 +178,8 @@ class MainActivity :  BaseActivity<ActivityMainBinding, MainViewModel>() {
 
                 when (it.status) {
                     Status.SUCCESS -> {
-                        memoDBInfoMap.clear()
-                        for (info in it.data!!) {
-                            if (memoDBInfoMap.containsKey(info.keyLecture)) {
-                                val list = memoDBInfoMap.get(info.keyLecture)
-                                list!!.add(info)
-                                memoDBInfoMap.put(
-                                    info.keyLecture,
-                                    list
-                                )
-                            } else {
-                                val list = ArrayList<MemoDBInfo>()
-                                list.add(info)
-                                memoDBInfoMap.put(
-                                    info.keyLecture,
-                                    list
-                                )
-                            }
-                        }
-
-                        schedules.clear()
-                        for (tData in timeTableDBInfoArray) {
-                            val startTimeArr = tData.start_time.split(":")
-                            val endTimeArr = tData.end_time.split(":")
-                            val schedule = Schedule()
-
-                            schedule.startTime.hour = startTimeArr[0].toInt()
-                            schedule.startTime.minute = startTimeArr[1].toInt()
-                            schedule.endTime.hour = endTimeArr[0].toInt()
-                            schedule.endTime.minute = endTimeArr[1].toInt()
-                            schedule.classTitle = tData.lecture
-                            schedule.classPlace = tData.location
-                            schedule.day = tData.dayofweek.toInt()
-                            schedule.color = tData.color
-                            schedule.key = tData.keyLecture
-                            schedule.memoDatas = memoDBInfoMap[tData.keyLecture]
-
-                            schedules.add(schedule)
-
-                        }
                         timetable.removeAll()
-                        timetable.add(schedules)
+                        timetable.add(it.data)
                     }
 
                     Status.ERROR -> {
