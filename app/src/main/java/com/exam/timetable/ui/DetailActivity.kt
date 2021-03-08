@@ -91,7 +91,8 @@ class DetailActivity : BaseActivity<ActivityDetailBinding, DetailViewModel>()
         }
 
         btnRemoveLecture.setOnClickListener {
-            viewModel.removeLectureToTimeTable(timeTableInfo!!, lectureKey!!)
+            if (timeTableInfo != null && lectureKey != null)
+                viewModel.removeLectureToTimeTable(timeTableInfo!!, lectureKey!!)
         }
 
     }

@@ -122,6 +122,8 @@ class MainActivity :  BaseActivity<ActivityMainBinding, MainViewModel>() {
         }
 
         tvSync.setOnClickListener {
+            timetable.setWeekDay(Const.TODAY)
+            titleDate(Const.TODAY)
             viewModel.syncMyDatas()
         }
         RxEvent.getObservable().subscribe({
@@ -161,7 +163,7 @@ class MainActivity :  BaseActivity<ActivityMainBinding, MainViewModel>() {
 
                 when (it.status) {
                     Status.SUCCESS -> {
-                        if (it.data != null && !it.data.isEmpty()) {
+                        if (it.data != null) {
                             timeTableDBInfoArray.clear()
                             timeTableDBInfoArray.addAll((it.data!!))
                         }
