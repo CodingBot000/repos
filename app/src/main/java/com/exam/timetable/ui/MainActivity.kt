@@ -39,11 +39,6 @@ class MainActivity :  BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override val viewModel : MainViewModel by viewModel()
 
-
-
-//    val timeTableDBInfoArray = ArrayList<TimeTableDBInfo>()
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

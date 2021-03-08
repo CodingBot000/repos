@@ -155,8 +155,6 @@ class MainViewModel(private val timetableInfoRepository: TimetableInfoRepository
                                                 timetableInfoRepository.insertTimeTableInfoDBNoRx(
                                                     myInfo
                                                 )
-
-                                            Log.v("qq", "qq result:$result")
                                         }
                                     }
                                     break

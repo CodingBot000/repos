@@ -53,7 +53,7 @@ dependencies {
 
     implementation "androidx.activity:activity-ktx:1.1.0"
     implementation 'androidx.annotation:annotation:1.1.0'
-    kapt "androidx.databinding:databinding-compiler:3.6.1"
+    kapt "androidx.databinding:databinding-compiler:4.1.2"
 
     implementation 'androidx.room:room-runtime:2.2.1'
     kapt 'androidx.room:room-compiler:2.2.1'
